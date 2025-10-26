@@ -1,0 +1,18 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bar-http-echo
+  namespace: foobar
+spec:
+  rules:
+    - host: bar.localhost
+      http:
+        paths:
+          - backend:
+              service:
+                name: bar-http-echo
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix

@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bar-http-echo
+  name: bar-http-echo
+spec:
+  selector:
+    matchLabels:
+      app: bar-http-echo
+  template:
+    metadata:
+      labels:
+        app: bar-http-echo
+    spec:
+      containers:
+      - name: bar-http-echo
+        image: hashicorp/http-echo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bar-http-echo
+spec:
+  ports:
+  - name: http-echo
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: bar-http-echo
+  type: ClusterIP
+---
