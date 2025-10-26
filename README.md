@@ -18,3 +18,12 @@ Optional: workflow_dispatch was enabled, so we can send http request to trigger 
 [1.b Trigger Events](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
 
 [1.c github context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts?versionId=free-pro-team%40latest&productId=actions&restPage=reference%2Cworkflows-and-actions%2Cevents-that-trigger-workflows#github-context)
+
+### 2.Provision a multi-node (at least 2 nodes) Kubernetes cluster (you may use KinD to provision this cluster on the CI runner (localhost))
+
+```kind create cluster --name k8s-playground --config task2-kind-k8s-cluster.yml```
+
+##### Reference
+[2.a nodes](https://kind.sigs.k8s.io/docs/user/configuration/#nodes)
+
+[2.b version](https://kind.sigs.k8s.io/docs/user/configuration/#kubernetes-version)
