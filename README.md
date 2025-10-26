@@ -27,3 +27,13 @@ Optional: workflow_dispatch was enabled, so we can send http request to trigger 
 [2.a nodes](https://kind.sigs.k8s.io/docs/user/configuration/#nodes)
 
 [2.b version](https://kind.sigs.k8s.io/docs/user/configuration/#kubernetes-version)
+
+### 3.Deploy Ingress controller to handle incoming HTTP requests
+
+```kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml```
+Since need to use NodePort Type service for ingress controller in local lab, need update spec of ingress-nginx-controller service
+
+##### References
+[3.a ingress-nginx](https://github.com/kubernetes/ingress-nginx)
+
+[3.b Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/)

@@ -1,0 +1,30 @@
+global:
+  image:
+    registry: registry.k8s.io
+controller:
+  admissionWebhooks:
+    patch:
+      image:
+        digest: sha256:334191231352856e1ec0c3e50f966edb59ec94a51906453d09f5820789e8b053
+        image: ingress-nginx/kube-webhook-certgen
+        tag: "v1.5.2"
+  config:
+    hsts: "true"
+    hsts-include-subdomains: "true"
+    hsts-max-age: "31536000"
+  image:
+    digest: sha256:5c2a1b6c03c4d18ecf14685d21a32bf6763a022f6f8cc07e9578f6cd5eca6180
+    image: ingress-nginx/controller
+    tag: "v1.12.1"
+    allowPrivilegeEscalation: true
+  metrics:
+    enabled: false
+  name: ngxin-ingress-controller
+  service:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+      service.beta.kubernetes.io/azure-load-balancer-internal: true
+defaultBackend:
+  digest: sha256:4dc5e07c8ca4e23bddb3153737d7b8c556e5fb2f29c4558b7cd6e6df99c512c7
+  image: ingress-nginx/defaultbackend-amd64
+  tag: "1.5"
